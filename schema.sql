@@ -1,0 +1,24 @@
+CREATE DATABASE IF NOT EXISTS pocketmarts;
+USE pocketmarts;
+
+CREATE TABLE products (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  category VARCHAR(50),
+  price DECIMAL(10,2) NOT NULL,
+  stock INT DEFAULT 0
+);
+
+CREATE TABLE users (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100),
+  email VARCHAR(120) UNIQUE,
+  password_hash VARCHAR(255)
+);
+
+CREATE TABLE orders (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT,
+  total DECIMAL(10,2),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
